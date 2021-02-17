@@ -86,7 +86,23 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+
+  {title: 'New Article',
+  date: 'Jan 1st, 2019',
+  firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+        hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+        Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+        hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+        hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+        hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+        Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+        Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+}
 ];
 
 /*
@@ -115,8 +131,9 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+const  articles = document.querySelector('div.articles')
 
-function articleMaker(obj){
+function articleMaker(artTitle, artDate, para1, para2, para3){
 
 //initiate elements for article
 
@@ -137,25 +154,34 @@ function articleMaker(obj){
   article.appendChild(thirdParagraph)
   article.appendChild(expandButton)
 
- 
 
+ console.log(article)
+console.log(data)
 article.classList.add('article')
 date.classList.add('date')
 expandButton.classList.add('expandButton')
+
+title.textContent = artTitle
+date.textContent = artDate
+firstParagraph.textContent = para1
+secondParagraph.textContent = para2
+thirdParagraph.textContent = para3
+expandButton.textContent = ('+')
 
 expandButton.addEventListener('click', () => {
   article.classList.toggle('article-open')
 })
 
-//return articleMaker
 
-return articleMaker
+
+
+
+
+return article
 
 }//end articleMaker
 
-const  articles = document.querySelector('div.articles')
-
-data.forEach (({obj}) => {
-  const article = articleMaker(obj)
-  articles.appendChild(article)
+data.forEach(({title, date, firstParagraph, secondParagraph, thirdParagraph})=>{
+  articles.appendChild(articleMaker(title, date, firstParagraph, secondParagraph, thirdParagraph))
 })
+
