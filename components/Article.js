@@ -116,7 +116,7 @@ const data = [
   Refresh the page to see the new article.
 */
 
-function articleMaker(article){
+function articleMaker(obj){
 
 //initiate elements for article
 
@@ -137,8 +137,25 @@ function articleMaker(article){
   article.appendChild(thirdParagraph)
   article.appendChild(expandButton)
 
+ 
+
 article.classList.add('article')
 date.classList.add('date')
 expandButton.classList.add('expandButton')
 
+expandButton.addEventListener('click', () => {
+  article.classList.toggle('article-open')
+})
+
+//return articleMaker
+
+return articleMaker
+
 }//end articleMaker
+
+const  articles = document.querySelector('div.articles')
+
+data.forEach (({obj}) => {
+  const article = articleMaker(obj)
+  articles.appendChild(article)
+})
