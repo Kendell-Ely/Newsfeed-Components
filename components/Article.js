@@ -155,8 +155,7 @@ function articleMaker(artTitle, artDate, para1, para2, para3){
   article.appendChild(expandButton)
 
 
- console.log(article)
-console.log(data)
+ 
 article.classList.add('article')
 date.classList.add('date')
 expandButton.classList.add('expandButton')
